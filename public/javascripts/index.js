@@ -12,7 +12,8 @@
 		$('#sign-in .popover')[0].classList.remove('shown');
 	}
 
-	$('#sign-in button')[0].on('click', showGoogleSignIn);
+	$('#sign-in button')[0].on('click', handleAuthClick);
+	// $('#sign-in button')[0].on('click', showGoogleSignIn);
 	$('#sign-in .popover header button')[0].on('click', hideGoogleSignIn);
 
 })();
