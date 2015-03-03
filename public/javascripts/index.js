@@ -1,14 +1,10 @@
 (function() {
 
 	var DIALOGS = {
-		oauth: new Dialog('#oauth-dialog'),
 		selectRoom: new Dialog('#select-room-dialog')
 	};
 
 	$('#sign-in button')[0].on('click', GoogleAuth.handleAuthClick);
-	$('#oauth-dialog header button')[0].on('click', function () {
-		DIALOGS.oauth.hide();
-	});
 
 	GoogleAuth.onAuthSuccess = function () {
 		Ajax.get('/api/v1/google/resources').then(function (response) {
