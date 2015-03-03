@@ -1,33 +1,51 @@
-var GOOGLE_CLIENT_ID = '885513253207-14hrlo5vv0tkm9m1qudigtpv1058pbhf.apps.googleusercontent.com';
-var GOOGLE_API_KEY   = 'AIzaSyCpx_LVqoGhgxCkB5J5auCBCnBKAEA05kA';
-var GOOGLE_SCOPES = 'https://www.googleapis.com/auth/plus.me';
-
+// jsonp callback
 function handleClientLoad() {
-	gapi.client.setApiKey(GOOGLE_API_KEY);
-	window.setTimeout(checkAuth, 1);
+    GoogleAuth.handleClientLoad();
 }
 
-function checkAuth() {
-    gapi.auth.authorize({client_id: GOOGLE_CLIENT_ID, scope: GOOGLE_SCOPES, immediate: true}, handleAuthResult);
-}
-    
-function handleAuthResult(authResult) {
-    var authorizeButton = $('#sign-in button.large')[0];
-    if (authResult && !authResult.error) {
-//     	alert('auth successful!');
-        makeApiCall();
-    } else {
-    	alert('auth failed');
-	    // authorizeButton.onclick = handleAuthClick;
-	}
-}
+(function () {
 
-function handleAuthClick(event) {
-	gapi.auth.authorize({client_id: GOOGLE_CLIENT_ID, scope: GOOGLE_SCOPES, immediate: false}, handleAuthResult);
-	return false;
-}
+    var GOOGLE_CLIENT_ID = '885513253207-14hrlo5vv0tkm9m1qudigtpv1058pbhf.apps.googleusercontent.com';
+    var GOOGLE_API_KEY = 'AIzaSyCpx_LVqoGhgxCkB5J5auCBCnBKAEA05kA';
+    var GOOGLE_SCOPES = 'https://www.googleapis.com/auth/plus.me';
 
-function makeApiCall() {
-	Ajax.get('/api/v1/google/resources');
-	// gapi.client.load('calendar', 'v3');
-}
+    window.GoogleAuth = {
+        onAuthSuccess: null, // delegate function
+
+        handleClientLoad: function handleClientLoad() {
+            gapi.client.setApiKey(GOOGLE_API_KEY);
+            window.setTimeout(checkAuth, 1);
+        },
+
+        handleAuthClick: function (event) {
+            gapi.auth.authorize({
+                client_id: GOOGLE_CLIENT_ID,
+                scope: GOOGLE_SCOPES,
+                immediate: false
+            }, handleAuthResult);
+            return false;
+        }
+
+    };
+
+    function checkAuth() {
+        gapi.auth.authorize({client_id: GOOGLE_CLIENT_ID, scope: GOOGLE_SCOPES, immediate: true}, handleAuthResult);
+    }
+
+    function handleAuthResult(authResult) {
+        if (authResult && !authResult.error) {
+            makeApiCall();
+        } else {
+            console.log('auth failed');
+            // todo
+        }
+    }
+
+    function makeApiCall() {
+        if (GoogleAuth.onAuthSuccess) {
+            GoogleAuth.onAuthSuccess();
+        }
+        //gapi.client.load('calendar', 'v3');
+    }
+
+})();

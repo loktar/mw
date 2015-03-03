@@ -1,19 +1,29 @@
 (function() {
-	
-	var $ = document.querySelectorAll.bind(document);
-	Element.prototype.on = Element.prototype.addEventListener;
 
+	var POPOVERS = {
+		oauth: new Dialog('#oauth-popover'),
+		selectRoom: new Dialog('#select-room-popover')
+	};
 
-	function showGoogleSignIn() {
-		$('#sign-in .popover')[0].classList.add('shown');
-	}
+	$('#sign-in button')[0].on('click', GoogleAuth.handleAuthClick);
+	$('#oauth-popover header button')[0].on('click', function () {
+		POPOVERS.oauth.hide();
+	});
 
-	function hideGoogleSignIn() {
-		$('#sign-in .popover')[0].classList.remove('shown');
-	}
+	GoogleAuth.onAuthSuccess = function () {
+		Ajax.get('/api/v1/google/resources').then(function (response) {
+			console.log('get success');
+			POPOVERS.selectRoom.show();
 
-	$('#sign-in button')[0].on('click', handleAuthClick);
-	// $('#sign-in button')[0].on('click', showGoogleSignIn);
-	$('#sign-in .popover header button')[0].on('click', hideGoogleSignIn);
+			var roomsList = new AvailableRoomsList(POPOVERS.selectRoom.el.querySelector('ol'));
+			roomsList.roomSelectedCallback = function (roomId) {
+				POPOVERS.selectRoom.showPage(1);
+				//TODO don't manage DOM here
+				$('.page.room-name input')[0].value = 'todo';
+			};
+		}, function (e) {
+			console.log('get failed: ' + e);
+		})
+	};
 
 })();

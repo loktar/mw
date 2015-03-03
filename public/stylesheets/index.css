@@ -1,11 +1,15 @@
 body {
 	background: #26BF52; /* Green */
-	color: white;
+	color: #333;
 	font-weight: 300;
 }
 
 body, button {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+button {
+	cursor: pointer;
 }
 
 button.large {
@@ -41,6 +45,11 @@ button.large {
 	text-align: left;
 }
 
+.popover header h1 {
+	font-size: 1.5em;
+	text-align: center;
+}
+
 .popover header button {
 	background: none;
 	border: none;
@@ -60,4 +69,29 @@ button.large {
 
 #sign-in button.large {
 	margin: 300px 0 0;
+}
+
+#select-room-popover li {
+	border-bottom: solid 1px #eeeeee;
+	cursor: pointer;
+	font-size: 1.2em;
+	padding: .8em 2em;
+	text-align: left;
+}
+
+#select-room-popover li:hover {
+	background: #f4f4f4;
+	color: #26BF52;
+}
+
+#select-room-popover .page.room-name input {
+	font-size: 1.2em;
+	margin: 3em 0;
+}
+
+#select-room-popover .page.room-name button {
+	background: none;
+	border: none;
+	color: #26BF52;
+	font-size: 1.2em;
 }
