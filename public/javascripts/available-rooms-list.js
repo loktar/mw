@@ -12,6 +12,16 @@
                 self.roomSelectedCallback(roomId);
             }
         });
+
+        var fragment = document.createDocumentFragment();
+        RoomsStore.rooms.forEach(function (room) {
+            var li = document.createElement('li');
+            li.setAttribute('data-room-id', room.identifier);
+            li.innerHTML = room.name;
+
+            fragment.appendChild(li);
+        });
+        el.appendChild(fragment);
     };
 
 })();

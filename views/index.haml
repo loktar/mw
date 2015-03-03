@@ -14,8 +14,6 @@
             %h1 Available Rooms
           %main
             %ol
-              %li{:'data-room-id' => "ian-id"} Ian's Desk
-              %li{:'data-room-id' => "kiki-id"} Kiki's Desk
         .page.room-name
           %header
             %h1 Room Name
@@ -30,4 +28,7 @@
     %script{type:"text/javascript", src:"https://apis.google.com/js/client.js?onload=handleClientLoad"}
     %script{type:"text/javascript", src:"/javascripts/available-rooms-list.js"}
     %script{type:"text/javascript", src:"/javascripts/dialog.js"}
+    %script{type:"text/javascript", src:"/javascripts/rooms-store.js"}
     %script{type:"text/javascript", src:"/javascripts/index.js"}
+
+    %script new IndexPageController();
