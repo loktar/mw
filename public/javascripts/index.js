@@ -1,9 +1,12 @@
 (function () {
 
     window.IndexPageController = function () {
-        var DIALOGS = {
-            selectRoom: new Dialog('#select-room-dialog')
-        };
+        var self = this;
+
+        this.selectedRoom = null;
+
+        this.selectRoomDialog = new SelectRoomDialog('#select-room-dialog');
+        this.selectRoomDialog.roomSelectedCallback = this.selectRoom.bind(this);
 
         $('#sign-in button')[0].on('click', GoogleAuth.handleAuthClick);
 
@@ -12,21 +15,20 @@
                 RoomsStore.setRooms(response);
 
                 console.log('get success');
-                DIALOGS.selectRoom.show();
-
-                var roomsList = new AvailableRoomsList(DIALOGS.selectRoom.el.querySelector('ol'));
-
-                roomsList.roomSelectedCallback = function (roomId) {
-                    DIALOGS.selectRoom.showPage(1);
-
-                    //TODO don't manage DOM here
-                    var room = RoomsStore.roomForId(roomId);
-                    $('.page.room-name input')[0].value = room.name;
-                };
+                self.selectRoomDialog.show();
             }, function (e) {
                 console.log('get failed: ' + e);
             })
         };
     };
+
+    IndexPageController.prototype = {
+        selectRoom: function (room) {
+            this.selectedRoom = room;
+            this.selectRoomDialog.hide();
+
+            console.log('Did select room: ' + room.name);
+        }
+    }
 
 })();
