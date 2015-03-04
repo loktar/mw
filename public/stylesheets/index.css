@@ -69,12 +69,30 @@ dialog main {
 	min-height: 500px;
 }
 
-#sign-in {
+#sections {
 	text-align: center;
+}
+
+#sections > section {
+	display: none;
+}
+
+.unauthorized #sign-in {
+	display: inherit;
+}
+
+.room-available #room {
+	display: inherit;
 }
 
 #sign-in button.large {
 	margin: 300px 0 0;
+}
+
+#room h1 {
+	margin: 300px 0 0;
+	color: #fff;
+	font-size: 6em;
 }
 
 #select-room-dialog li {
