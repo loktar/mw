@@ -39,7 +39,7 @@ dialog {
 }
 
 dialog.shown {
-	top: 200px;
+	top: 100px;
 }
 
 dialog header {
@@ -65,7 +65,8 @@ dialog header button {
 dialog main {
 	background: white;
 	border-radius: 0 0 5px 5px;
-	min-height: 500px;
+	height: 600px;
+	overflow-y: scroll;
 }
 
 #sections {
@@ -120,7 +121,7 @@ dialog main {
 
 #select-room-dialog .page.room-name input {
 	font-size: 1.2em;
-	margin: 3em 0;
+	margin: 4em 0 2em;
 }
 
 #select-room-dialog .page.room-name button {
