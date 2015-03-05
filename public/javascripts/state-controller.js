@@ -9,11 +9,20 @@
             this.update();
         },
 
+        setIsRoomBusy: function (isRoomBusy) {
+            this.isRoomBusy = isRoomBusy;
+            this.update();
+        },
+
         update: function () {
             var className = 'unauthorized';
 
             if (this.selectedRoom) {
-                className = 'room-available';
+                if (this.isRoomBusy) {
+                    className = 'room-busy';
+                } else {
+                    className = 'room-available';
+                }
             }
 
             var sections = $('#sections')[0];

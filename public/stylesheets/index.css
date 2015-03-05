@@ -1,5 +1,4 @@
 body {
-	background: #26BF52; /* Green */
 	color: #333;
 	font-weight: 300;
 }
@@ -70,7 +69,17 @@ dialog main {
 }
 
 #sections {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+
+	background: #26BF52; /* Green */
 	text-align: center;
+}
+
+#sections.room-busy {
+	background-color: red;
 }
 
 #sections > section {
@@ -81,7 +90,8 @@ dialog main {
 	display: inherit;
 }
 
-.room-available #room {
+.room-available #room,
+.room-busy #room {
 	display: inherit;
 }
 
