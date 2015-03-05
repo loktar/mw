@@ -13,8 +13,8 @@ describe Google::ResourcesParser do
     it 'should parse the resource identifiers' do
       parser = Google::ResourcesParser.new
       resources = parser.from_xml(fixture_success)
-      expect(resources[0].identifier).to eq '-15097206368'
-      expect(resources[1].identifier).to eq '-57668534457'
+      expect(resources[0].identifier).to eq 'taptera.com_2d3135303937323036333638@resource.calendar.google.com'
+      expect(resources[1].identifier).to eq 'taptera.com_2d3537363638353334343537@resource.calendar.google.com'
     end
   end
 end

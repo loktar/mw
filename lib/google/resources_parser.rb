@@ -9,7 +9,7 @@ module Google
       doc.xpath('/feed/entry').map do |resource_node|
         r = Resource.new
         r.name = resource_node.xpath("property[@name='resourceCommonName']/@value").first.text
-        r.identifier = resource_node.xpath("property[@name='resourceId']/@value").first.text
+        r.identifier = resource_node.xpath("property[@name='resourceEmail']/@value").first.text
         r
       end
     end
