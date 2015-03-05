@@ -7,13 +7,18 @@ function handleClientLoad() {
 
     var GOOGLE_CLIENT_ID = '885513253207-14hrlo5vv0tkm9m1qudigtpv1058pbhf.apps.googleusercontent.com';
     var GOOGLE_API_KEY = 'AIzaSyCpx_LVqoGhgxCkB5J5auCBCnBKAEA05kA';
-    var GOOGLE_SCOPES = 'https://www.googleapis.com/auth/plus.me';
+    var GOOGLE_SCOPES = [
+        'https://www.googleapis.com/auth/plus.me',
+        'https://www.googleapis.com/auth/calendar'
+    ];
 
     window.GoogleAuth = {
         onAuthSuccess: null, // delegate function
 
         handleClientLoad: function handleClientLoad() {
             gapi.client.setApiKey(GOOGLE_API_KEY);
+            gapi.client.load('calendar', 'v3');
+
             window.setTimeout(checkAuth, 1);
         },
 
@@ -45,7 +50,6 @@ function handleClientLoad() {
         if (GoogleAuth.onAuthSuccess) {
             GoogleAuth.onAuthSuccess();
         }
-        //gapi.client.load('calendar', 'v3');
     }
 
 })();
