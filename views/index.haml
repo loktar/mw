@@ -2,15 +2,19 @@
 %html
   %head
     %link{rel:"stylesheet", type:"text/css", href:"/stylesheets/reset.css"}
+    %link{rel:"stylesheet", type:"text/css", href:"/stylesheets/dialog.css"}
+    %link{rel:"stylesheet", type:"text/css", href:"/stylesheets/select-room-dialog.css"}
     %link{rel:"stylesheet", type:"text/css", href:"/stylesheets/index.css"}
 
   %body
     #sections
       %section#sign-in
-        %button{class: "large"} Sign In With Google
+        %button.large Sign In With Google
 
       %section#room
         %h1 Room Name
+
+        %button#book-room.large Book this room
 
       %dialog#select-room-dialog
         .page

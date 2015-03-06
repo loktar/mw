@@ -1,0 +1,24 @@
+#select-room-dialog li {
+    border-bottom: solid 1px #eeeeee;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: .8em 2em;
+    text-align: left;
+}
+
+#select-room-dialog li:hover {
+    background: #f4f4f4;
+    color: #26BF52;
+}
+
+#select-room-dialog .page.room-name input {
+    font-size: 1.2em;
+    margin: 4em 0 2em;
+}
+
+#select-room-dialog .page.room-name button {
+    background: none;
+    border: none;
+    color: #26BF52;
+    font-size: 1.2em;
+}

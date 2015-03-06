@@ -21,54 +21,6 @@ button.large {
 	width: 500px;
 }
 
-dialog {
-	/* reset */
-	display: block;
-	background: none;
-	border: none;
-	padding: 0;
-
-	position: absolute;
-	top: 100%;
-	left: 0;
-	right: 0;
-	margin: auto;
-	width: 900px;
-
-	transition: top .7s ease;
-}
-
-dialog.shown {
-	top: 100px;
-}
-
-dialog header {
-	background: white;
-	border-radius: 5px 5px 0 0;
-	border-bottom: solid 1px #eee;
-	padding: .9em .6em;
-	text-align: left;
-}
-
-dialog header h1 {
-	font-size: 1.5em;
-	text-align: center;
-}
-
-dialog header button {
-	background: none;
-	border: none;
-	color: #26BF52; /* Green */
-	font-size: 1.2em;
-}
-
-dialog main {
-	background: white;
-	border-radius: 0 0 5px 5px;
-	height: 600px;
-	overflow-y: scroll;
-}
-
 #sections {
 	position: absolute;
 	height: 100%;
@@ -106,27 +58,10 @@ dialog main {
 	font-size: 6em;
 }
 
-#select-room-dialog li {
-	border-bottom: solid 1px #eeeeee;
-	cursor: pointer;
-	font-size: 1.2em;
-	padding: .8em 2em;
-	text-align: left;
-}
-
-#select-room-dialog li:hover {
-	background: #f4f4f4;
-	color: #26BF52;
-}
-
-#select-room-dialog .page.room-name input {
-	font-size: 1.2em;
-	margin: 4em 0 2em;
-}
-
-#select-room-dialog .page.room-name button {
-	background: none;
-	border: none;
-	color: #26BF52;
-	font-size: 1.2em;
+#room button.large {
+	position: absolute;
+	bottom: 50px;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
 }
