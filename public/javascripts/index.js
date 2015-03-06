@@ -26,13 +26,13 @@
     };
 
     IndexPageController.prototype = {
-        selectRoom: function (room) {
+        selectRoom: function (room, displayName) {
             var self = this;
 
             this.selectRoomDialog.hide();
 
             this.stateController.selectRoom(room);
-            $('#room h1')[0].innerHTML = room.name;
+            $('#room h1')[0].innerHTML = displayName;
 
             console.log('Did select room: ' + room.name);
 

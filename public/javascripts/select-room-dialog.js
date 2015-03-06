@@ -8,7 +8,7 @@
 
         var roomNameForm = $('.page.room-name form')[0];
         roomNameForm.on('submit', function (e) {
-            self.roomSelectedCallback(self.selectedRoom);
+            self.roomSelectedCallback(self.selectedRoom, self.roomNameEl.value);
 
             e.preventDefault();
             return false;
