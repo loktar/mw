@@ -28,6 +28,8 @@ button.large {
 	overflow: hidden;
 
 	background: #26BF52; /* Green */
+	transition: background .33s ease;
+
 	text-align: center;
 }
 
