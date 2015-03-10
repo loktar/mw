@@ -10,10 +10,11 @@
         this.selectRoomDialog.roomSelectedCallback = this.selectRoom.bind(this);
 
         this.bookRoomDialog = new BookRoomDialog('#book-room-dialog');
+        this.bookRoomDialog.bookRoomCallback = this.bookRoom.bind(this);
 
         $('#sign-in button')[0].on('click', GoogleAuth.handleAuthClick);
 
-        $('button#book-room')[0].on('click', this.bookRoomDialog.show.bind(this.bookRoomDialog));
+        $('button#book-room')[0].on('click', this.showBookRoomDialog.bind(this));
 
         GoogleAuth.onAuthSuccess = function () {
             Ajax.get('/api/v1/google/resources').then(function (response) {
@@ -44,6 +45,14 @@
                 console.log('Room is busy: ' + isBusy);
                 self.stateController.setIsRoomBusy(isBusy);
             });
+        },
+
+        showBookRoomDialog: function () {
+            this.bookRoomDialog.show(this.stateController.selectedRoom);
+        },
+
+        bookRoom: function (bookerName) {
+            console.log('booking a room for ' + bookerName);
         }
     }
 
