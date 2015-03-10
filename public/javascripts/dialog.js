@@ -5,16 +5,32 @@
         this.showPage(0);
     };
 
-    window.Dialog.prototype = {
+    Dialog.prototype = {
         show: function() {
             this.el.classList.add('shown');
         },
+
         hide: function() {
+            var self = this;
+
             this.el.classList.remove('shown');
+
+            setTimeout(function () {
+                self.reset();
+            }, 300);
         },
+
+        reset: function () {
+            var forms = this.el.$('form');
+            for (var i = 0; i < forms.length; i++) {
+                forms[i].reset();
+            }
+        },
+
         pages: function () {
             return this.el.querySelectorAll('.page');
         },
+
         showPage: function(index) {
             var pages = this.pages();
             if (pages) {

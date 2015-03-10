@@ -12,13 +12,5 @@
 }
 
 #select-room-dialog .page.room-name input {
-    font-size: 1.2em;
     margin: 4em 0 2em;
-}
-
-#select-room-dialog .page.room-name button {
-    background: none;
-    border: none;
-    color: #26BF52;
-    font-size: 1.2em;
 }

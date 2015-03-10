@@ -49,3 +49,14 @@ dialog main {
     height: 600px;
     overflow-y: scroll;
 }
+
+dialog main input[type=text] {
+    font-size: 1.2em;
+}
+
+dialog main button {
+    background: none;
+    border: none;
+    color: #26BF52;
+    font-size: 1.2em;
+}

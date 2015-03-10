@@ -7,7 +7,13 @@
 
     BookRoomDialog.prototype = {
         show: function () {
+            var self = this;
+
             this.dialog.show();
+
+            setTimeout(function () {
+                self.dialog.el.$('input#booker-name')[0].focus();
+            }, 300);
         },
 
         hide: function () {

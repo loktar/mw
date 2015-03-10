@@ -27,7 +27,7 @@
             %h1 Room Name
           %main
             %form
-              %input#room-name
+              %input#room-name{type: 'text'}
               %br
               %button{type: 'submit'} Done
 
@@ -38,7 +38,7 @@
             %h1 Book this room
           %main
             %form
-              %input.booker-name{placeholder: 'Type your name'}
+              %input#booker-name{type: 'text', placeholder: 'Type your name'}
               %br
               %button{type: 'submit'} Book Now
 
