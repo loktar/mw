@@ -39,6 +39,10 @@ dialog header button {
     font-size: 1.2em;
 }
 
+dialog header button.right {
+    float:right;
+}
+
 dialog main {
     background: white;
     border-radius: 0 0 5px 5px;

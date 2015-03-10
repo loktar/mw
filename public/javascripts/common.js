@@ -4,6 +4,7 @@ var $ = function (el) {
 	}
 	return [el];
 };
+Element.prototype.$ = Element.prototype.querySelectorAll;
 Element.prototype.on = Element.prototype.addEventListener;
 
 var Ajax = {

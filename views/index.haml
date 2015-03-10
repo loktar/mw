@@ -31,6 +31,17 @@
               %br
               %button{type: 'submit'} Done
 
+      %dialog#book-room-dialog
+        .page
+          %header
+            %button.close.right Close
+            %h1 Book this room
+          %main
+            %form
+              %input.booker-name{placeholder: 'Type your name'}
+              %br
+              %button{type: 'submit'} Book Now
+
     %script{type:"text/javascript", src:"/javascripts/common.js"}
     %script{type:"text/javascript", src:"/javascripts/google-auth.js"}
     %script{type:"text/javascript", src:"https://apis.google.com/js/client.js?onload=handleClientLoad"}
@@ -39,6 +50,7 @@
     %script{type:"text/javascript", src:"/javascripts/rooms-store.js"}
     %script{type:"text/javascript", src:"/javascripts/schedule-service.js"}
     %script{type:"text/javascript", src:"/javascripts/select-room-dialog.js"}
+    %script{type:"text/javascript", src:"/javascripts/book-room-dialog.js"}
     %script{type:"text/javascript", src:"/javascripts/state-controller.js"}
     %script{type:"text/javascript", src:"/javascripts/index.js"}
 

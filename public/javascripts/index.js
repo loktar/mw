@@ -9,7 +9,11 @@
         this.selectRoomDialog = new SelectRoomDialog('#select-room-dialog');
         this.selectRoomDialog.roomSelectedCallback = this.selectRoom.bind(this);
 
+        this.bookRoomDialog = new BookRoomDialog('#book-room-dialog');
+
         $('#sign-in button')[0].on('click', GoogleAuth.handleAuthClick);
+
+        $('button#book-room')[0].on('click', this.bookRoomDialog.show.bind(this.bookRoomDialog));
 
         GoogleAuth.onAuthSuccess = function () {
             Ajax.get('/api/v1/google/resources').then(function (response) {
