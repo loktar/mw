@@ -1,6 +1,7 @@
 (function () {
-    window.BookRoomDialog = function (el) {
+    window.BookRoomDialog = function (el, roomBookerService) {
         this.dialog = new Dialog(el);
+        this.roomBookerService = roomBookerService;
 
         $(el)[0].$('header button.close')[0].on('click', this.hide.bind(this));
         $(el)[0].$('form')[0].on('submit', this.bookRoom.bind(this));
@@ -25,15 +26,16 @@
         },
 
         bookRoom: function (e) {
+            var self = this;
+
             e.preventDefault();
 
             var bookerName = this.bookerNameEl().value;
-
-            new RoomBookerService().bookRoom(this.room, bookerName)
-                .then(function (response) {
-                    console.log('Room booked successfully: ' + response);
-                }, function (reason) {
-                    console.log('Room failed to book:' + reason);
+            this.roomBookerService.bookRoom(this.room, bookerName)
+                .then(function () {
+                    self.hide();
+                }, function () {
+                    //todo: show failure message
                 });
 
             return false;

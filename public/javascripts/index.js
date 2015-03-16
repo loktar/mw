@@ -9,7 +9,7 @@
         this.selectRoomDialog = new SelectRoomDialog('#select-room-dialog');
         this.selectRoomDialog.roomSelectedCallback = this.selectRoom.bind(this);
 
-        this.bookRoomDialog = new BookRoomDialog('#book-room-dialog');
+        this.bookRoomDialog = new BookRoomDialog('#book-room-dialog', new RoomBookerService(this.stateController));
         this.bookRoomDialog.bookRoomCallback = this.bookRoom.bind(this);
 
         $('#sign-in button')[0].on('click', GoogleAuth.handleAuthClick);
