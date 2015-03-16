@@ -37,18 +37,19 @@
                 if (response.status == 200) {
                     var json = JSON.parse(response.body);
 
-                    var isEventInProgress = false;
-                    json.items.forEach(function (item) {
-                        var start = new Date(item.start.dateTime);
-                        var end = new Date(item.end.dateTime);
+                    var currentEvent = null;
+                    json.items.forEach(function (event) {
+                        var start = new Date(event.start.dateTime);
+                        var end = new Date(event.end.dateTime);
 
                         var now = new Date();
 
                         var isThisEventRightNow = start.getTime() <= now.getTime() && end.getTime() >= now.getTime();
-
-                        isEventInProgress = isEventInProgress || isThisEventRightNow;
+                        if (isThisEventRightNow) {
+                            currentEvent = event;
+                        }
                     });
-                    self.callback(isEventInProgress);
+                    self.callback(currentEvent);
                 }
             });
         }

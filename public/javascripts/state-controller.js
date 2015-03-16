@@ -9,16 +9,20 @@
             this.update();
         },
 
-        setIsRoomBusy: function (isRoomBusy) {
-            this.isRoomBusy = isRoomBusy;
+        setCurrentEvent: function (event) {
+            this.currentEvent = event;
             this.update();
+        },
+
+        isRoomBusy: function () {
+            return !!this.currentEvent;
         },
 
         update: function () {
             var className = 'unauthorized';
 
             if (this.selectedRoom) {
-                if (this.isRoomBusy) {
+                if (this.isRoomBusy()) {
                     className = 'room-busy';
                 } else {
                     className = 'room-available';

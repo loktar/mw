@@ -9,12 +9,15 @@
         this.selectRoomDialog = new SelectRoomDialog('#select-room-dialog');
         this.selectRoomDialog.roomSelectedCallback = this.selectRoom.bind(this);
 
-        this.bookRoomDialog = new BookRoomDialog('#book-room-dialog', new RoomBookerService(this.stateController));
+        this.roomBookerService = new RoomBookerService(this.stateController);
+
+        this.bookRoomDialog = new BookRoomDialog('#book-room-dialog', this.roomBookerService);
         this.bookRoomDialog.bookRoomCallback = this.bookRoom.bind(this);
 
         $('#sign-in button')[0].on('click', GoogleAuth.handleAuthClick);
 
         $('button#book-room')[0].on('click', this.showBookRoomDialog.bind(this));
+        $('button#end-meeting')[0].on('click', this.endCurrentMeeting.bind(this));
 
         GoogleAuth.onAuthSuccess = function () {
             Ajax.get('/api/v1/google/resources').then(function (response) {
@@ -41,9 +44,9 @@
 
             console.log('Did select room: ' + room.name);
 
-            this.scheduleService.monitorRoom(room, function (isBusy) {
-                console.log('Room is busy: ' + isBusy);
-                self.stateController.setIsRoomBusy(isBusy);
+            this.scheduleService.monitorRoom(room, function (event) {
+                console.log('Current event: ' + event.id);
+                self.stateController.setCurrentEvent(event);
             });
         },
 
@@ -53,6 +56,12 @@
 
         bookRoom: function (bookerName) {
             console.log('booking a room for ' + bookerName);
+        },
+
+        endCurrentMeeting: function () {
+            var room = this.stateController.selectedRoom;
+            var event = this.stateController.currentEvent;
+            this.roomBookerService.endCurrentMeeting(room, event);
         }
     }
 
