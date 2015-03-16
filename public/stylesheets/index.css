@@ -41,6 +41,18 @@ button.large {
 	display: none;
 }
 
+#end-meeting {
+	display: none;
+}
+
+.room-busy #end-meeting {
+	display: block;
+}
+
+.room-busy #book-room {
+	display: none;
+}
+
 .unauthorized #sign-in {
 	display: inherit;
 }
