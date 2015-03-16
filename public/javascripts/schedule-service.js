@@ -13,7 +13,7 @@
 
             setInterval(function () {
                 self.fetchSchedule();
-            }, 60 * 1000);
+            }, 15 * 1000);
         },
 
         fetchSchedule: function () {
@@ -37,15 +37,18 @@
                 if (response.status == 200) {
                     var json = JSON.parse(response.body);
 
+                    var isEventInProgress = false;
                     json.items.forEach(function (item) {
                         var start = new Date(item.start.dateTime);
                         var end = new Date(item.end.dateTime);
 
                         var now = new Date();
 
-                        var isEventInProgress = start.getTime() <= now.getTime() && end.getTime() >= now.getTime();
-                        self.callback(isEventInProgress);
+                        var isThisEventRightNow = start.getTime() <= now.getTime() && end.getTime() >= now.getTime();
+
+                        isEventInProgress = isEventInProgress || isThisEventRightNow;
                     });
+                    self.callback(isEventInProgress);
                 }
             });
         }
