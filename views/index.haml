@@ -5,6 +5,7 @@
     %link{rel:"stylesheet", type:"text/css", href:"/stylesheets/dialog.css"}
     %link{rel:"stylesheet", type:"text/css", href:"/stylesheets/book-room-dialog.css"}
     %link{rel:"stylesheet", type:"text/css", href:"/stylesheets/select-room-dialog.css"}
+    %link{rel:"stylesheet", type:"text/css", href:"/stylesheets/schedule-dialog.css"}
     %link{rel:"stylesheet", type:"text/css", href:"/stylesheets/index.css"}
 
   %body
@@ -43,6 +44,40 @@
               %input#booker-name{type: 'text', placeholder: 'Type your name'}
               %br
               %button{type: 'submit'} Book Now
+
+      %dialog#schedule-dialog.shown
+        .page
+          %header
+            %button.close.right Close
+            %h1 Today's Schedule
+          %main
+            %ol.schedule-bg
+              %li 12:00
+              %li 12:30
+              %li 1:00
+              %li 1:30
+              %li 2:00
+              %li 2:30
+              %li 3:00
+              %li 3:30
+              %li 4:00
+              %li 4:30
+              %li 5:00
+              %li 5:30
+              %li 6:00
+              %li 6:30
+              %li 7:00
+              %li 8:30
+            %ol.schedule-events
+              %li
+                .title Event 1
+                .subtitle Hosted by someone
+              %li
+                .title Event 2
+                .subtitle Hosted by Ian
+              %li
+                .title Event 3
+                .subtitle Hosted by nobody
 
     %script{type:"text/javascript", src:"/javascripts/common.js"}
     %script{type:"text/javascript", src:"/javascripts/google-auth.js"}

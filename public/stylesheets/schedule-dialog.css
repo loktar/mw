@@ -1,0 +1,39 @@
+#schedule-dialog .schedule-bg {
+    text-align: left;
+    text-indent: 1em;
+}
+
+#schedule-dialog main {
+    position: relative;
+}
+
+#schedule-dialog .schedule-bg li {
+    border-bottom: solid 1px #eeeeee;
+    height: 42px;
+}
+
+#schedule-dialog .schedule-events {
+    position: absolute;
+    top: 0;
+    left: 5em;
+    width: 800px;
+
+    text-align: left;
+    text-indent: 1em;
+}
+
+#schedule-dialog .schedule-events li {
+    background-color: #ffffee;
+    border: solid 1px #ffffdd;
+    border-radius: 3px;
+    height: 41px;
+}
+
+#schedule-dialog .schedule-events li .title {
+    padding-top: .2em;
+}
+
+#schedule-dialog .schedule-events li .subtitle {
+    font-size: .9em;
+    padding-top: .2em;
+}
